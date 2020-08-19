@@ -1,4 +1,3 @@
-
 var cacheName = 'hello-pwa';
 var filesToCache = [
   '/',
