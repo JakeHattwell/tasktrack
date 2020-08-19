@@ -9,7 +9,7 @@ window.onload = () => {
 		} else {
 		  // Register the service worker
 		  navigator.serviceWorker
-			.register("/sw.js", {
+			.register("sw.js", {
 			  scope: "./",
 			})
 			.then(function (reg) {
