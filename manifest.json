@@ -1,0 +1,10 @@
+
+{
+	"name": "TaskTrack",
+	"short_name": "TT",
+	"lang": "en-US",
+	"start_url": "/index.html",
+	"display": "standalone",
+	"background_color": "white",
+	"theme_color": "white"
+  }
