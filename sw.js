@@ -1,4 +1,4 @@
-var cacheName = 'TaskTrack';
+var cacheName = 'task-track';
 var filesToCache = [
   '/',
   '/index.html',
