@@ -134,42 +134,22 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
-  <script src="js/table.js"></script>
   <script>	
-    
     if ("tasksContent" in localStorage){
       document.getElementById("tasks").innerHTML = localStorage.getItem("tasksContent");
       document.getElementById("starttime").value = localStorage.getItem("startTime");
+      
     }</script>
-
-  <script>
-	$('#tbodyTest >tr').on('focusout', (e) => {
-  let target = $(e.target),
-    parent_row = $(e.target).closest('tr'),
-    previous_row = parent_row.prev();
-  setTimeout(() => {
-    if (!isNaN(target.text())) {
-		$('#tbodyTest').children('tr').each((i,e)=>{
-      $(e).find('td:eq(3)').text(Number($(e).find('td:eq(2)').text()) +Number($(e).prev().find('td:eq(3)').text()))
-    })
-    }else{
-      parent_row.find('td:eq(3)').text("0");
-  parent_row.find('td:eq(3)').text("0");
-  $('#tbodyTest').children('tr').each((i,e)=>{
-  $(e).find('td:eq(3)').text(Number($(e).find('td:eq(2)').text()) +Number($(e).prev().find('td:eq(3)').text()))
-})
-    }
-  })
-})
-$('table-up').on("click",function(e){
-  e.preventDefault();
-  $('#tbodyTest >tr').trigger('focusout')
-})
-$('table-down').on("click",function(e){
-  e.preventDefault();
-  $('#tbodyTest >tr').trigger('focusout')
-})
-  </script>
+    <script src="js/table.js"></script>
   <script>$('#tbodyTest >tr').trigger('focusout')</script>
+  <script>$("#restore").on('click',function(e){
+      e.preventDefault();
+      $('#tbodyTest >tr').trigger('focusout');
+  })
+  $("#starttime").on('focusout',function(e){
+      e.preventDefault();
+      $('#tbodyTest >tr').trigger('focusout');
+  })
+  </script>
 </body>
 </html>
