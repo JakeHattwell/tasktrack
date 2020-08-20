@@ -126,9 +126,3 @@ function retrieve(){
 // 	document.getElementById("tasks").innerHTML = localStorage.getItem("tasksContent");
 //   }else {
 
-window.onload = () => {
-if ("tasksContent" in localStorage){
-	document.getElementById("tasks").innerHTML = localStorage.getItem("tasksContent");
-	document.getElementById("starttime").value = localStorage.getItem("startTime");
-	}
-}
