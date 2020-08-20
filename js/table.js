@@ -1,18 +1,21 @@
 const $tableID = $('#table');
 
-
 const newTr = `
 		<tr class="hide">
-			<td class="pt-3-half">
-			<span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
-			<span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
-			</td>
-			<td class="pt-3-half" contenteditable="true">Example Task</td>
-			<td class="pt-3-half" contenteditable="true">5</td>
-			<td>
-			<span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Remove</button></span>
-			</td>
-		</tr>`;
+                    <td class="pt-3-half">
+                    <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
+                        aria-hidden="true"></i></a></span>
+                    <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
+                        aria-hidden="true"></i></a></span>
+                    </td>
+                    <td class="pt-3-half" contenteditable="true">Example Task</td>
+                    <td class="pt-3-half editable" contenteditable="true">5</td>
+                    <td class="pt-3-half" contenteditable="false">0</td>
+                    <td>
+                    <span class="table-remove"><button type="button"
+                      class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+                    </td>
+                  </tr>`;
 
 $('.table-add').on('click', 'i', () => {
 
@@ -24,11 +27,14 @@ $('.table-add').on('click', 'i', () => {
 	}
 
 	$tableID.find('table').append($clone);
+	$('#tbodyTest >tr').trigger('focusout')
 });
 
 $tableID.on('click', '.table-remove', function () {
-
-	$(this).parents('tr').detach();
+	if(document.getElementById("tbodyTest").rows.length > 1){
+		$(this).parents('tr').detach();
+	}
+	$('#tbodyTest >tr').trigger('focusout')
 });
 
 $tableID.on('click', '.table-up', function () {
@@ -121,6 +127,27 @@ function retrieve(){
 	</tbody>
   </table>`;
 }
+
+
+	// $('#tbodyTest >tr').on('focusout', 'td.editable', (e) => {
+	// 	let target = $(e.target),
+	// 	  parent_row = $(e.target).closest('tr'),
+	// 	  previous_row = parent_row.prev();
+	// 	setTimeout(() => {
+	// 	  if (!isNaN(target.text())) {
+	// 		  $('#tbodyTest').children('tr').each((i,e)=>{
+	// 		$(e).find('td:eq(3)').text(Number($(e).find('td:eq(2)').text()) +Number($(e).prev().find('td:eq(3)').text()))
+	// 	  })
+	// 	  }else{
+	// 		target.text("0");
+	// 	parent_row.find('td:eq(3)').text("0");
+	// 	$('#tbodyTest').children('tr').each((i,e)=>{
+	// 	$(e).find('td:eq(3)').text(Number($(e).find('td:eq(2)').text()) +Number($(e).prev().find('td:eq(3)').text()))
+	//   })
+	// 	  }
+	// 	})
+	//   })
+
 
 // if ("tasksContent" in localStorage){
 // 	document.getElementById("tasks").innerHTML = localStorage.getItem("tasksContent");

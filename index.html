@@ -68,10 +68,11 @@
                     <th class="text-center">Sort</th>
                     <th class="text-center">Task</th>
                     <th class="text-center">Duration (Minutes)</th>
+                    <th class="text-center">End Time</th>
                     <th class="text-center">Delete</th>
                   </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="tbodyTest">
                   <tr>
                     <td class="pt-3-half">
                     <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
@@ -80,7 +81,8 @@
                         aria-hidden="true"></i></a></span>
                     </td>
                     <td class="pt-3-half" contenteditable="true">Pack lunch</td>
-                    <td class="pt-3-half" contenteditable="true">5</td>
+                    <td class="pt-3-half editable" contenteditable="true">5</td>
+                    <td class="pt-3-half" contenteditable="false">0</td>
                     <td>
                     <span class="table-remove"><button type="button"
                       class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
@@ -96,7 +98,8 @@
                         aria-hidden="true"></i></a></span>
                     </td>
                     <td class="pt-3-half" contenteditable="true">Example Task</td>
-                    <td class="pt-3-half" contenteditable="true">5</td>
+                    <td class="pt-3-half editable" contenteditable="true">5</td>
+                    <td class="pt-3-half" contenteditable="false">0</td>
                     <td>
                     <span class="table-remove"><button type="button"
                       class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
@@ -126,16 +129,47 @@
     </div>
   </div>
   </div>
-  <script>
-    	if ("tasksContent" in localStorage){
-		document.getElementById("tasks").innerHTML = localStorage.getItem("tasksContent");
-		document.getElementById("starttime").value = localStorage.getItem("startTime");
-		}
-  </script>
+
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
   <script src="js/table.js"></script>
+  <script>	
+    
+    if ("tasksContent" in localStorage){
+      document.getElementById("tasks").innerHTML = localStorage.getItem("tasksContent");
+      document.getElementById("starttime").value = localStorage.getItem("startTime");
+    }</script>
+
+  <script>
+	$('#tbodyTest >tr').on('focusout', (e) => {
+  let target = $(e.target),
+    parent_row = $(e.target).closest('tr'),
+    previous_row = parent_row.prev();
+  setTimeout(() => {
+    if (!isNaN(target.text())) {
+		$('#tbodyTest').children('tr').each((i,e)=>{
+      $(e).find('td:eq(3)').text(Number($(e).find('td:eq(2)').text()) +Number($(e).prev().find('td:eq(3)').text()))
+    })
+    }else{
+      parent_row.find('td:eq(3)').text("0");
+  parent_row.find('td:eq(3)').text("0");
+  $('#tbodyTest').children('tr').each((i,e)=>{
+  $(e).find('td:eq(3)').text(Number($(e).find('td:eq(2)').text()) +Number($(e).prev().find('td:eq(3)').text()))
+})
+    }
+  })
+})
+$('table-up').on("click",function(e){
+  e.preventDefault();
+  $('#tbodyTest >tr').trigger('focusout')
+})
+$('table-down').on("click",function(e){
+  e.preventDefault();
+  $('#tbodyTest >tr').trigger('focusout')
+})
+  </script>
+  <script>$('#tbodyTest >tr').trigger('focusout')</script>
 </body>
 </html>

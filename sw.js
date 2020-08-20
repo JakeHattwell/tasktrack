@@ -6,6 +6,7 @@ var filesToCache = [
   'js/main.js',
   'js/table.js',
   'manifest.json',
+  'sw.js'
 ];
 
 /* Start the service worker and cache all of the app's content */

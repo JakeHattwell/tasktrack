@@ -5,5 +5,4 @@ window.onload = () => {
 	  navigator.serviceWorker
 			   .register('./sw.js');
 	}
-
-  }
+}
