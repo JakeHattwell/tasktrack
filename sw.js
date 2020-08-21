@@ -1,4 +1,4 @@
-var cacheName = 'task-track_0_1_3_16';
+var cacheName = 'task-track_0_1_3';
 
 var filesToCache = [
   './',
