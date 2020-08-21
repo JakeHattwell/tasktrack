@@ -1,4 +1,4 @@
-var cacheName = 'task-track';
+var cacheName = 'task-track1';
 var filesToCache = [
   './',
   'index.html',
@@ -17,7 +17,6 @@ self.addEventListener('install', function(e) {
     })
   );
 });
-
 /* Serve cached content when offline */
 self.addEventListener('fetch', function(e) {
   e.respondWith(
@@ -25,4 +24,10 @@ self.addEventListener('fetch', function(e) {
       return response || fetch(e.request);
     })
   );
+});
+
+self.addEventListener('message', event => {
+  if (event.data === 'skipWaiting') {
+    self.skipWaiting();
+  }
 });
