@@ -16,9 +16,11 @@ window.onload = () => {
 						button.addEventListener('click', function() {
 							newSW.postMessage('skipWaiting');
 							button.style.display='none';
+
 						});
 						window.addEventListener('beforeunload', (event) => {
 							newSW.postMessage('skipWaiting');
+
 						});
 						// Assume that 'display' is 'none' initially.
 						button.style.display = 'inline';

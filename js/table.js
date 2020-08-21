@@ -137,7 +137,6 @@ $('#tbodyTest >tr').on('focusout', (e) => {
 	
 	d.setHours(+hours);
 	d.setMinutes(minutes);
-	console.log(d)
   setTimeout(() => {
     if (!isNaN(target.text())) {
 		$('#tbodyTest').children('tr').each((i,e)=>{

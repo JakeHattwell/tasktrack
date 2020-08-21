@@ -1,4 +1,5 @@
-var cacheName = 'task-track1';
+var cacheName = 'task-track_0_1_3_16';
+
 var filesToCache = [
   './',
   'index.html',
@@ -17,7 +18,7 @@ self.addEventListener('install', function(e) {
     })
   );
 });
-/* Serve cached content when offline */
+
 self.addEventListener('fetch', function(e) {
   e.respondWith(
     caches.match(e.request).then(function(response) {
@@ -26,8 +27,19 @@ self.addEventListener('fetch', function(e) {
   );
 });
 
+
 self.addEventListener('message', event => {
   if (event.data === 'skipWaiting') {
     self.skipWaiting();
   }
+});
+
+self.addEventListener('activate', function(event) {
+  console.log('New SW active')
+  caches.keys().then(function(names) {
+    for (let name of names)
+        if(name!=cacheName){
+          caches.delete(name);
+        }
+  });
 });
