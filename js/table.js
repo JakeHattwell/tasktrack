@@ -1,21 +1,19 @@
 const $tableID = $('#table');
 
-const newTr = `
-		<tr class="hide">
-                    <td class="pt-3-half">
-                    <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                        aria-hidden="true"></i></a></span>
-                    <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
-                        aria-hidden="true"></i></a></span>
-                    </td>
-                    <td class="pt-3-half" contenteditable="true">Example Task</td>
-                    <td class="pt-3-half editable" contenteditable="true">5</td>
-                    <td class="pt-3-half" contenteditable="false">0</td>
-                    <td>
-                    <span class="table-remove"><button type="button"
-                      class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                    </td>
-                  </tr>`;
+const newTr = `<!-- This is our clonable table line -->
+<tr class="hide">
+  <td class="pt-3-half">
+	<span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
+		aria-hidden="true"></i></a></span>
+	<span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
+		aria-hidden="true"></i></a></span>
+	<span class="table-remove"><button type="button"
+	  class="btn btn-danger btn-rounded btn-xs my-0">Remove</button></span>
+  </td>
+  <td class="pt-3-half" contenteditable="true">Example Task</td>
+  <td class="pt-3-half editable" contenteditable="true">5</td>
+  <td class="pt-3-half" contenteditable="false">0</td>
+</tr>`;
 
 $('.table-add').on('click', 'i', () => {
 
@@ -72,7 +70,7 @@ function destroy(){
   <tr>
 	<th class="text-center">Sort</th>
 	<th class="text-center">Task</th>
-	<th class="text-center">Duration (Minutes)</th>
+	<th class="text-center">Mins</th>
 	<th class="text-center">Delete</th>
   </tr>
   </thead>
@@ -84,14 +82,13 @@ function destroy(){
   // Retrieve Content    
 function retrieve(){
 	document.getElementById("starttime").value = "07:00:00";
-	document.getElementById("tasks").innerHTML = `<table class="table table-bordered table-responsive-md table-striped text-center" id="tasks">
+	document.getElementById("tasks").innerHTML = `<table class="table table-bordered table-striped text-center" id="tasks">
 	<thead>
 	<tr>
 	  <th class="text-center">Sort</th>
 	  <th class="text-center">Task</th>
-	  <th class="text-center">Duration (Minutes)</th>
+	  <th class="text-center">Mins</th>
 	  <th class="text-center">End Time</th>
-	  <th class="text-center">Delete</th>
 	</tr>
 	</thead>
 	<tbody id="tbodyTest">
@@ -101,31 +98,28 @@ function retrieve(){
 		  aria-hidden="true"></i></a></span>
 	  <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
 		  aria-hidden="true"></i></a></span>
+	  <span class="table-remove"><button type="button"
+		class="btn btn-danger btn-rounded btn-xs my-0">Remove</button></span>
 	  </td>
 	  <td class="pt-3-half" contenteditable="true">Pack lunch</td>
 	  <td class="pt-3-half editable" contenteditable="true">5</td>
 	  <td class="pt-3-half" contenteditable="false">0</td>
-	  <td>
-	  <span class="table-remove"><button type="button"
-		class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-	  </td>
+	  
 	</tr>
 
 	<!-- This is our clonable table line -->
 	<tr class="hide">
 	  <td class="pt-3-half">
-	  <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-		  aria-hidden="true"></i></a></span>
-	  <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
-		  aria-hidden="true"></i></a></span>
+		<span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
+			aria-hidden="true"></i></a></span>
+		<span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
+			aria-hidden="true"></i></a></span>
+		<span class="table-remove"><button type="button"
+		  class="btn btn-danger btn-rounded btn-xs my-0">Remove</button></span>
 	  </td>
 	  <td class="pt-3-half" contenteditable="true">Example Task</td>
 	  <td class="pt-3-half editable" contenteditable="true">5</td>
 	  <td class="pt-3-half" contenteditable="false">0</td>
-	  <td>
-	  <span class="table-remove"><button type="button"
-		class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-	  </td>
 	</tr>
 	</tbody>
   </table>`;
